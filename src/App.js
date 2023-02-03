@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import BlockPass from "./Components/BlockPass";
+import logo1 from './images/wallet-logo1.jpg'
+import logo2 from './images/wallet-logo2.jpg'
+import logo3 from './images/wallet-logo3.png'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	return (
+		<div className="text-slate-200 App">
+			<BlockPass logoList={[logo1, logo2, logo3]}></BlockPass>
+		</div>
+	);
 }
 
 export default App;

@@ -1,90 +1,100 @@
 import React, { useState } from "react";
-import AvailableWallet from "./Modals/AvailableWallet";
-import Wallets from "./Modals/Wallets";
+import AvailableWallets from "./Modals/AvailableWallets/AvailableWallets";
+import "./Modals/Modal.css";
+import "./BlockPass.css";
+import Button from "./Button/Button";
+import ModalController from "./ModalController/ModalController";
 
-const BlockPass = ({logoList}) => {
-    const [walletModalOpen, setWalletModalOpen] = useState(false);
-    const [availableWalletModalOpen, setAvailableWalletModalOpen] = useState(false);
+const BlockPass = ({ logoList }) => {
+	const [modalController, setModalController] = useState(false);
+	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
+		useState(false);
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: logoList[0],
-			name: "MetaMask1",
+			name: "MetaMask",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
-			selected: true,
+			selected: false,
 			primary: true,
+			score: 905,
+			grade: "A+",
 		},
 		{
 			logo: logoList[1],
-			name: "MetaMask2",
+			name: "WalletConnect",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
-			selected: true,
+			selected: false,
 			primary: false,
+			score: 700,
+			grade: "A-",
 		},
 		{
 			logo: logoList[2],
-			name: "MetaMask3",
+			name: "Coinbase",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
 			primary: false,
+			score: 650,
+			grade: "B",
 		},
 		{
-			logo: logoList[0],
-			name: "MetaMask4",
+			logo: logoList[3],
+			name: "Magic Wallet",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
 			primary: false,
+			score: 805,
+			grade: "A",
 		},
 		{
-			logo: logoList[1],
-			name: "MetaMask5",
+			logo: logoList[4],
+			name: "Portis",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
 			primary: false,
+			score: 907,
+			grade: "A+",
 		},
 		{
-			logo: logoList[2],
-			name: "MetaMask6",
+			logo: logoList[5],
+			name: "Coinbase Wallet",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
 			primary: false,
+			score: 750,
+			grade: "A-",
 		},
 		{
-			logo: logoList[0],
-			name: "MetaMask7",
+			logo: logoList[6],
+			name: "Torus",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
 			primary: false,
-		},
-		{
-			logo: logoList[1],
-			name: "MetaMask8",
-			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
-			selected: false,
-			primary: false,
+			score: 700,
+			grade: "A-",
 		},
 	]);
+
 	return (
-		<div className=" mt-8">
-			<label
-				htmlFor="modal"
-				onClick={() => setWalletModalOpen(true)}
+		<div className="blockpass">
+			<Button
+				onClick={() => setModalController(true)}
 				className={`${
-					walletModalOpen ? "blur-sm " : " "
-				}px-4 py-3 rounded-full bg-slate-600 cursor-pointer`}
+					modalController ? "my-blur" : " "
+				} blockpass-button`}
 			>
-				Connect Wallet
-			</label>
-			{walletModalOpen && (
-				<Wallets
-					setWalletModalOpen={setWalletModalOpen}
+				My Account
+			</Button>
+			{modalController && (
+				<ModalController
+					availableWallets={availableWallets}
+					setModalController={setModalController}
 					availableWalletModalOpen={availableWalletModalOpen}
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
-					availableWallets={availableWallets}
-					setAvailableWallets={setAvailableWallets}
 				/>
 			)}
 			{availableWalletModalOpen && (
-				<AvailableWallet
+				<AvailableWallets
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
 					availableWallets={availableWallets}
 					setAvailableWallets={setAvailableWallets}
